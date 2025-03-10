@@ -178,8 +178,6 @@ The application implements:
 The application uses Log4j2 with:
 - Console logging
 - File logging
-- Logstash integration
-- GELF format support
 
 ## Contributing
 
