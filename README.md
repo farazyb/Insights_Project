@@ -61,7 +61,7 @@ This project is designed to:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/farazyb/Insights_Project.git
 cd reporter
 ```
 
