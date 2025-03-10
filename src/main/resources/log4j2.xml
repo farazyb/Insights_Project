@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"/>
+        </Console>
+
+        <RollingFile name="RollingFile" append="true" fileName="log/InsightsProject-ESB/InsightsProject.log"
+                     filePattern="log/InsightsProject/InsightsProject-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%-20t] %-5level %-35logger{2} %-3L %M - %msg%xEx%n"/>>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- LOG "com.sea*" at TRACE level -->
+        <Logger name="com.sea" level="ALL">
+<!--            <AppenderRef ref="gelf"/>-->
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+
+        <!-- LOG everything at Error level -->
+        <Root name="com.sea" level="Error">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+

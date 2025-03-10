@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "9100:9100"
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=reporter
+      - DB_USERNAME=reporter
+      - DB_PASSWORD=reporter123
+      - ORGANIZATION_API_KEY=${ORGANIZATION_API_KEY}
+      - ORGANIZATION_API_URL=${ORGANIZATION_API_URL}
+      - ORGANIZATION_API_PUBLIC_KEY=${ORGANIZATION_API_PUBLIC_KEY}
+      - ORGANIZATION_API_PRIVATE_KEY=${ORGANIZATION_API_PRIVATE_KEY}
+    depends_on:
+      - mysql
+    networks:
+      - reporter-network
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=reporter
+      - MYSQL_USER=reporter
+      - MYSQL_PASSWORD=reporter123
+      - MYSQL_ROOT_PASSWORD=root123
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - reporter-network
+
+volumes:
+  mysql-data:
+
+networks:
+  reporter-network:
+    driver: bridge 
