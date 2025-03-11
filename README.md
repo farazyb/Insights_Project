@@ -41,7 +41,6 @@ This project is designed to:
 - Lombok
 - MapStruct
 - Log4j2
-- Logstash GELF
 - Commons CSV
 - Commons VFS2
 - JSch
