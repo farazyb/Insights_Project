@@ -62,7 +62,7 @@ This project is designed to:
 1. Clone the repository:
 ```bash
 git clone https://github.com/farazyb/Insights_Project.git
-cd reporter
+cd Insights_Project
 ```
 
 2. Configure environment variables:
